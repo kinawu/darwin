@@ -8,7 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class MerchantDao  extends BaseDao<Merchant> {
+public class MerchantDao extends BaseDao<Merchant> {
     @Override
     protected Class<Merchant> getEntityClass() {
         return Merchant.class;

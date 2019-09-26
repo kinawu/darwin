@@ -13,13 +13,14 @@ import java.util.List;
 
 @Repository
 public class TransactionCdrImsiHourSumDao extends BaseDao<TransactionCdrImsiHourSum> {
-//    @Autowired
-//    private JdbcTemplate jdbcTemplate;
-//
-//    @Override
-//    public JdbcTemplate getJdbcTemplate() {
-//        return jdbcTemplate;
-//    }
+    @Autowired
+    @Qualifier("darwinJdbcTemplate")
+    protected JdbcTemplate jdbcTemplate;
+
+    @Override
+    public JdbcTemplate getJdbcTemplate() {
+        return jdbcTemplate;
+    }
 
     public List<TransactionCdrImsiHourSum> queryMany(TransactionCdrImsiHourSum transactionCdrImsiHourSum) throws Exception {
         return this.selectMany(transactionCdrImsiHourSum);

@@ -12,33 +12,32 @@ import javax.sql.DataSource;
 
 @Configuration
 public class DataSourceConfig {
-    @Bean(name = "dataSource")
     @Primary
-    @Qualifier("dataSource")
-    @ConfigurationProperties(prefix = "spring.database")
-    public DataSource dataSource() {
+    @Bean(name = "newtonDataSource")
+    @Qualifier("newtonDataSource")
+    @ConfigurationProperties(prefix="spring.datasource")
+    public DataSource newtonDataSource() {
         return DataSourceBuilder.create().build();
     }
 
-    @Bean(name = "jdbcTemplate")
     @Primary
-    public JdbcTemplate jdbcTemplate(
-            @Qualifier("dataSource") DataSource dataSource
-    ) {
+    @Bean(name = "newtonJdbcTemplate")
+    public JdbcTemplate newtonJdbcTemplate(
+            @Qualifier("newtonDataSource") DataSource dataSource) {
         return new JdbcTemplate(dataSource);
     }
 
+
     @Bean(name = "darwinDataSource")
     @Qualifier("darwinDataSource")
-    @ConfigurationProperties(prefix = "spring.datasource.darwin")
+    @ConfigurationProperties(prefix="spring.datasource.darwin")
     public DataSource darwinDataSource() {
         return DataSourceBuilder.create().build();
     }
 
     @Bean(name = "darwinJdbcTemplate")
     public JdbcTemplate darwinJdbcTemplate(
-            @Qualifier("darwinDataSource") DataSource dataSource
-    ) {
+            @Qualifier("darwinDataSource") DataSource dataSource) {
         return new JdbcTemplate(dataSource);
     }
 }
