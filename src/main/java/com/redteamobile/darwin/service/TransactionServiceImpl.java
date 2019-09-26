@@ -28,7 +28,7 @@ public class TransactionServiceImpl implements TransactionService {
             throws Exception {
         ObjectNode result = Json.newObject();
         try {
-            List<TransactionCdrImsiHourSum> list = transactionCdrImsiHourSumDao.selectMany(
+            List<TransactionCdrImsiHourSum> list = transactionCdrImsiHourSumDao.queryMany(
                     TransactionCdrImsiHourSum.build()
                             .setTransactionId(transaction.getImsiTransactionId())
                             .setImsi(imsiProfile.getImsi())

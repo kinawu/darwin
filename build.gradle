@@ -26,9 +26,7 @@ repositories {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    compile("org.springframework.boot:spring-boot-starter-jdbc") {
-        exclude group: "org.apache.tomcat", module: "tomcat-jdbc"
-    }
+    compile("org.springframework.boot:spring-boot-starter-jdbc") 
     implementation 'org.projectlombok:lombok:1.16.18'
     compile group: 'com.jcabi', name: 'jcabi-aspects', version: '0.22.5'
     // https://mvnrepository.com/artifact/io.springfox/springfox-swagger2
@@ -37,12 +35,10 @@ dependencies {
     // https://mvnrepository.com/artifact/joda-time/joda-time
     compile group: 'joda-time', name: 'joda-time', version: '2.3'
     compile group: 'com.typesafe.play', name: 'play-java-ws_2.11', version: '2.4.1' exclude group: "org.slf4j"
-
     compile("com.redteamobile:mis:0.0.25")
     // https://mvnrepository.com/artifact/mysql/mysql-connector-java
     compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.6'
     runtime("mysql:mysql-connector-java")
-    compile("com.h2database:h2:1.4.192")
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
